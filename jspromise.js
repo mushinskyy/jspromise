@@ -14,12 +14,12 @@ function Promise() {
 				"onReject" onReject 
 			};
 
-			this.callbacks.push(callback);
+			callbacks.push(callback);
 		}
 
 	this.resolve = function(value) { 
 		state = PROMISE_RESOLVED;
-		this.complete(value) 
+		complete(value) 
 	}
 
 	this.reject = function(value) {
