@@ -24,7 +24,7 @@ function Promise() {
 
 	this.reject = function(value) {
 		state = PROMISE_PENDING; 
-		this.complete(value) 
+		complete(value) 
 	}
 
 	this.complete = function(value) {
@@ -37,7 +37,7 @@ function Promise() {
 			return;
 		}
 
-		this.callbacks.forEach( function(callback) {
+		callbacks.forEach( function(callback) {
 			if (result == PROMISE_RESOLVED) {
 				callback['onResolve'](value);
 			}
@@ -46,10 +46,6 @@ function Promise() {
 			}
 		});
 
-		this.resolve = this.reject = function() {
-			throw new Error('Promise was already completed. ');
-		}
-
-		this.state = PROMISE_COMPLETED;
+		state = PROMISE_COMPLETED;
 	}
 }
