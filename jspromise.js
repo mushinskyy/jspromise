@@ -1,5 +1,5 @@
 var PROMISE_PENDING = 0;
-var PROMISE_FULFILLED = 1;
+var PROMISE_RESOLVED = 1;
 var PROMISE_REJECTED = 2;
 
 function Promise() {
@@ -16,6 +16,8 @@ function Promise() {
 					this.callbacks.push(callback);
 				}
 
-	//this.resolve = function(value) { this.complete() }
+	this.resolve = function(value) { this.complete(PROMISE_RESOLVED, value) }
+	this.reject = function(value) { this.complete(PROMISE_REJECTED, value) }
 
+	this.complete = function(result, value) { }
 }
